@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content=""Disneyland Paris Web Adventure"">
+        <meta property="od:description" content="Disneyland Paris Web Adventure est un fan-site qui rend disponible des ressources sur Disneyland Paris.">
+        <meta name="description" content="Disneyland Paris Web Adventure est un fan-site qui rend disponible des ressources sur Disneyland Paris.">
+        <link rel="stylesheet" href="_lib/global.css">
+        <link rel="stylesheet" href="_lib/bulma.css">  <!-- bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma -->
+        <link rel="stylesheet" href="_lib/outlined.icon.fonts.google.css" /> <!-- Copyright Google - All right reserved -->
+        <script type="text/javascript" src="_lib/global.js"></script> 
+        <script src="https://kit.fontawesome.com/32b1c2fb78.js" crossorigin="anonymous"></script>
+        <title>"Disneyland Paris Web Adventure"</title>
+    </head>
+
+    <body>
+        Chargement...
+    </body>
+
+</html>
+
+<script>
+function $_GET(param) {
+	var vars = {};
+	window.location.href.replace( location.hash, '' ).replace( 
+		/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+		function( m, key, value ) { // callback
+			vars[key] = value !== undefined ? value : '';
+		}
+	);
+
+	if ( param ) {
+		return vars[param] ? vars[param] : null;	
+	}
+	return vars;
+}
+
+var $_GET = $_GET();
+
+var dlpurl = "index.php?from=git";
+if ($_GET["siteweb"] != null){
+    dlpurl = $_GET["siteweb"];
+}
+
+let nocache = "&nocache=" + Math.random() * 100000000;
+let XHR = new XMLHttpRequest();
+XHR.open("GET", "http://miala.000webhostapp.com/dlp/" + dlpurl + nocache);
+XHR.send();
+
+XHR.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        document.getElementById("tocomplete").innerHTML = this.responseText;
+    }
+}
+
+window.location.replace("http://miala.000webhostapp.com/dlp/" + dlpurl + nocache);
+</script>
