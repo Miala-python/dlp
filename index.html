@@ -21,6 +21,19 @@
 </html>
 
 <script>
+var dlpurl = "/dlp/index.php?from=git";
+
+let nocache = "&nocache=" + Math.random() * 100000000;
+let XHR = new XMLHttpRequest();
+XHR.open("GET", "http://miala.000webhostapp.com" + dlpurl + nocache);
+XHR.send();
+
+XHR.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        document.getElementById("tocomplete").innerHTML = this.responseText;
+    }
+}
+
 function $_GET(param) {
 	var vars = {};
 	window.location.href.replace( location.hash, '' ).replace( 
@@ -37,28 +50,6 @@ function $_GET(param) {
 }
 
 var $_GET = $_GET();
-
-var dlpurl = "/dlp/index.php?from=git";
-if ($_GET["siteweb"] != null){
-    dlpurl = $_GET["siteweb"];
-    if ($_GET["img_to_print"] != null){
-    dlpurl += "?img_to_print=" + $_GET["img_to_print"];
-}
-}
-
-
-let nocache = "&nocache=" + Math.random() * 100000000;
-let XHR = new XMLHttpRequest();
-XHR.open("GET", "http://miala.000webhostapp.com" + dlpurl + nocache);
-XHR.send();
-
-XHR.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200){
-        document.getElementById("tocomplete").innerHTML = this.responseText;
-    }
-}
-
-nocache += "&" + dlpurl;
 
 console.log(dlpurl);
 window.location.replace("http://miala.000webhostapp.com" + dlpurl + nocache);

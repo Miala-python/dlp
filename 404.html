@@ -1,4 +1,20 @@
 Chargement...
 <script>
-    window.location.replace("index.html?siteweb="+window.location.pathname);
+var dlpurl = window.location.pathname;
+
+let nocache = "&nocache=" + Math.random() * 100000000;
+let XHR = new XMLHttpRequest();
+XHR.open("GET", "http://miala.000webhostapp.com" + dlpurl + nocache);
+XHR.send();
+
+XHR.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        document.getElementById("tocomplete").innerHTML = this.responseText;
+    }
+}
+
+console.log(dlpurl);
+window.location.replace("http://miala.000webhostapp.com" + dlpurl + nocache);
+
+//https://miala-python.github.io/dlp/full_img.php?img_to_print=plan/leg_disney.svg
 </script>
