@@ -38,14 +38,14 @@ function $_GET(param) {
 
 var $_GET = $_GET();
 
-var dlpurl = "index.php?from=git";
+var dlpurl = "/dlp/index.php?from=git";
 if ($_GET["siteweb"] != null){
     dlpurl = $_GET["siteweb"];
 }
 
 let nocache = "&nocache=" + Math.random() * 100000000;
 let XHR = new XMLHttpRequest();
-XHR.open("GET", "http://miala.000webhostapp.com/dlp/" + dlpurl + nocache);
+XHR.open("GET", "http://miala.000webhostapp.com" + dlpurl + nocache);
 XHR.send();
 
 XHR.onreadystatechange = function(){
@@ -54,5 +54,5 @@ XHR.onreadystatechange = function(){
     }
 }
 
-window.location.replace("http://miala.000webhostapp.com/dlp/" + dlpurl + nocache);
+window.location.replace("http://miala.000webhostapp.com" + dlpurl + nocache);
 </script>
